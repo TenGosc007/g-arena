@@ -4,7 +4,7 @@ import { ShapeX } from "@/components/Atoms/ShapeX";
 
 export const Background = () => {
   return (
-    <div className="absolute z-0 opacity-10 w-full h-full">
+    <div className="absolute z-[-1] opacity-10 w-full h-full">
       <div className="absolute w-full h-full overflow-hidden">
         <div className="w-full h-full transform -rotate-165">
           <BgGrid />

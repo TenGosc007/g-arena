@@ -17,13 +17,13 @@
   --font-handlee: var(--font-handlee);
 
   /* Custom */
-  --primary: var(--color-goldenrod);
-  --secondary: var(--color-goldenrod-800);
-  --tertiary: var(--color-goldenrod-900);
-  --black: var(--color-black);
-  --dark: var(--color-dark);
+  --color-primary: var(--color-goldenrod);
+  --color-secondary: var(--color-goldenrod-800);
+  --color-tertiary: var(--color-goldenrod-900);
+  --color-black: var(--color-black);
+  --color-dark: var(--color-dark);
   --color-gray: var(--color-gray);
-  --white: var(--color-white);
+  --color-white: var(--color-white);
 }
 
 @media (prefers-color-scheme: dark) {

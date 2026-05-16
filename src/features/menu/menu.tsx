@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "./components/Button";
 import { Title } from "./components/Title";
 
@@ -7,8 +9,12 @@ export const Menu = () => {
       <Title />
 
       <div className="flex w-full flex-col items-center gap-6">
-        <Button kind="primary">New Game</Button>
-        <Button kind="secondary">Settings</Button>
+        <Link href="/game" className="w-full">
+          <Button kind="primary">New Game</Button>
+        </Link>
+        <Link href="/settings" className="w-full">
+          <Button kind="secondary">Settings</Button>
+        </Link>
       </div>
     </div>
   );

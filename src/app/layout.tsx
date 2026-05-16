@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import { Montserrat, Handlee } from "next/font/google";
 
@@ -17,6 +17,11 @@ const handlee = Handlee({
   subsets: ["latin"],
   weight: "400",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Create Next App",

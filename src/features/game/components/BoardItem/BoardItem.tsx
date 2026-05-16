@@ -10,7 +10,7 @@ type Props = {
 };
 
 const sharedStyle =
-  "w-full h-full aspect-square bg-dark flex items-center justify-center text-6xl lg:text-8xl";
+  "w-full h-full aspect-square bg-dark flex items-center justify-center text-6xl lg:text-8xl select-none";
 
 export const BoardItem = ({ item, onClick }: Props) => {
   if (!item || typeof item !== "string") {
@@ -26,7 +26,7 @@ export const BoardItem = ({ item, onClick }: Props) => {
   }
 
   return (
-    <div className={cn(sharedStyle)}>
+    <div className={sharedStyle}>
       {item && typeof item === "string" ? <PlayerSymbol symbol={item} /> : null}
     </div>
   );

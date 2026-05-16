@@ -35,7 +35,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Background />
-        <div className="flex flex-col flex-1 z-0">
+        <div className="flex flex-col flex-1 z-0 font-montserrat">
           <main className="flex flex-1">{children}</main>
           <Footer />
         </div>

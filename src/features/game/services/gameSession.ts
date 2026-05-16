@@ -9,7 +9,3 @@ export const getGame = () => {
 
   return game;
 };
-
-export const resetGame = () => {
-  getGame().reset();
-};

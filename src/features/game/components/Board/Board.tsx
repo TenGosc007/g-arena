@@ -1,9 +1,18 @@
+import { PlayerMoveStatus, PlayerSymbol as PlayerSymbolType } from "t3core";
+
 import { cn } from "@/lib/utils";
+
+import { BoardItem } from "../BoardItem";
 
 const BOARD_SIZE = "max-h-[610px] max-w-[610px]";
 const COLUMNS = "grid-cols-3";
 
-export const Board = () => {
+type Props = {
+  board: (PlayerSymbolType | number)[];
+  onClick: (index: number) => PlayerMoveStatus;
+};
+
+export const Board = ({ board, onClick }: Props) => {
   return (
     <div
       className={cn(
@@ -12,8 +21,8 @@ export const Board = () => {
         BOARD_SIZE,
       )}
     >
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-        <div key={item} className="w-full h-full bg-dark"></div>
+      {board.map((item, index) => (
+        <BoardItem key={index} item={item} onClick={() => onClick(index)} />
       ))}
     </div>
   );

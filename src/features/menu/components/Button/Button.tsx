@@ -6,7 +6,7 @@ type Props = {
 };
 
 const sharedStyles =
-  "h-24 rounded-sm uppercase w-full cursor-pointer transition-all active:scale-95";
+  "h-18 lg:h-24 rounded-sm uppercase w-full cursor-pointer transition-all active:scale-95";
 
 export const Button = ({ children, kind }: Props) => {
   const buttonClass =
@@ -17,7 +17,9 @@ export const Button = ({ children, kind }: Props) => {
 
   return (
     <button className={buttonClass}>
-      <p className="font-montserrat font-bold text-2xl">{children}</p>
+      <p className="font-montserrat font-bold text-xl lg:text-2xl">
+        {children}
+      </p>
     </button>
   );
 };

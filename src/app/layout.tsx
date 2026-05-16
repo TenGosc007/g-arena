@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Montserrat, Handlee } from "next/font/google";
 
 import { Background } from "@/components/Organisms/Background";
+import { Footer } from "@/components/Organisms/Footer";
 
 import "./globals.css";
 
@@ -34,7 +35,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Background />
-        <main className="flex flex-1 z-0">{children}</main>
+        <div className="flex flex-col flex-1 z-0">
+          <main className="flex flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

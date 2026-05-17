@@ -2,6 +2,9 @@ import Link from "next/link";
 import { RefObject } from "react";
 import { GameStatus } from "t3core";
 
+import { ActionButton } from "@/components/Atoms/ActionButton";
+import { Modal } from "@/components/Atoms/Modal";
+
 type Props = {
   gameStatus: GameStatus;
   resetGame: () => void;
@@ -10,10 +13,7 @@ type Props = {
 
 export const GameResultModal = ({ gameStatus, resetGame, ref }: Props) => {
   return (
-    <dialog
-      ref={ref}
-      className="border border-primary rounded-md bg-dark text-white p-6 lg:p-12 w-full lg:max-w-md"
-    >
+    <Modal>
       <div className="flex flex-col gap-8">
         <h2 className="text-2xl lg:text-3xl font-bold text-primary text-center">
           {gameStatus.status === "win"
@@ -21,23 +21,20 @@ export const GameResultModal = ({ gameStatus, resetGame, ref }: Props) => {
             : "Game ended in a draw!"}
         </h2>
 
-        <div className="flex flex-col gap-4 text-sm lg:text-base font-bold">
-          <button
-            className="bg-primary text-dark p-3 rounded-xs uppercase cursor-pointer"
+        <div className="flex flex-col gap-4">
+          <ActionButton
             onClick={() => {
               resetGame();
               ref.current?.close();
             }}
           >
             Play Again
-          </button>
+          </ActionButton>
           <Link href="/">
-            <button className="w-full bg-dark border border-primary text-white p-3 rounded-xs uppercase cursor-pointer">
-              Back to menu
-            </button>
+            <ActionButton variant="outlined">Back to menu</ActionButton>
           </Link>
         </div>
       </div>
-    </dialog>
+    </Modal>
   );
 };

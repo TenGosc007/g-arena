@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 
 import { BoardItem } from "../BoardItem";
 
-const BOARD_SIZE = "max-h-[610px] max-w-[610px]";
+const BOARD_SIZE =
+  "w-[clamp(280px,min(calc(100dvh-260px),calc(100dvw-48px)),610px)]";
 const COLUMNS = "grid-cols-3";
 
 type Props = {

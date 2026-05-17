@@ -3,6 +3,7 @@ import { Modal } from "@/components/Atoms/Modal";
 
 type Props = {
   ref: React.RefObject<HTMLDialogElement | null>;
+  onClose: () => void;
   soundEnabled?: boolean;
   onSoundToggle?: () => void;
   isDarkMode?: boolean;
@@ -11,6 +12,7 @@ type Props = {
 
 export const SettingsModal = ({
   ref,
+  onClose,
   soundEnabled,
   onSoundToggle,
   isDarkMode,
@@ -69,7 +71,7 @@ export const SettingsModal = ({
           </div>
         </section>
 
-        <ActionButton onClick={() => ref.current?.close()}>Close</ActionButton>
+        <ActionButton onClick={onClose}>Close</ActionButton>
       </div>
     </Modal>
   );

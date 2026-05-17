@@ -2,45 +2,36 @@
 
 import { GearIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useRef } from "react";
 
 import { GameTitle } from "@/components/Atoms/GameTItle";
 import { Icon } from "@/components/Atoms/Icon/Icon";
-
-import { InfoModal } from "../InfoModal";
-import { SettingsModal } from "../SettingsModal";
+import { useModalStore } from "@/store/modalStore";
 
 const ICON_SIZE = 24;
 
 export const Header = () => {
-  const modalInfoRef = useRef<HTMLDialogElement>(null);
-  const settingsModalRef = useRef<HTMLDialogElement>(null);
+  const openModal = useModalStore((s) => s.openModal);
 
   return (
-    <>
-      <header className="flex w-full items-center justify-between p-4">
-        <Link href="/">
-          <GameTitle size="medium" />
-        </Link>
+    <header className="flex w-full items-center justify-between p-4">
+      <Link href="/">
+        <GameTitle size="medium" />
+      </Link>
 
-        <div className="flex items-center gap-4">
-          <Icon
-            icon={InfoCircledIcon}
-            width={ICON_SIZE}
-            height={ICON_SIZE}
-            onClick={() => modalInfoRef.current?.showModal()}
-          />
-          <Icon
-            icon={GearIcon}
-            width={ICON_SIZE}
-            height={ICON_SIZE}
-            onClick={() => settingsModalRef.current?.showModal()}
-          />
-        </div>
-      </header>
-
-      <InfoModal ref={modalInfoRef} />
-      <SettingsModal ref={settingsModalRef} />
-    </>
+      <div className="flex items-center gap-4">
+        <Icon
+          icon={InfoCircledIcon}
+          width={ICON_SIZE}
+          height={ICON_SIZE}
+          onClick={() => openModal("info")}
+        />
+        <Icon
+          icon={GearIcon}
+          width={ICON_SIZE}
+          height={ICON_SIZE}
+          onClick={() => openModal("settings")}
+        />
+      </div>
+    </header>
   );
 };

@@ -4,6 +4,7 @@ import { Montserrat, Handlee } from "next/font/google";
 
 import { Background } from "@/components/Organisms/Background";
 import { Footer } from "@/components/Organisms/Footer";
+import { ModalProvider } from "@/components/Organisms/ModalProvider";
 
 import "./globals.css";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         <div className="flex flex-col flex-1 z-0 font-montserrat">
           <main className="flex flex-1">{children}</main>
           <Footer />
+          <ModalProvider />
         </div>
       </body>
     </html>

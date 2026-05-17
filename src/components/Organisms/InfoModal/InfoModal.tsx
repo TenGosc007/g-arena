@@ -3,9 +3,10 @@ import { Modal } from "@/components/Atoms/Modal";
 
 type Props = {
   ref: React.RefObject<HTMLDialogElement | null>;
+  onClose: () => void;
 };
 
-export const InfoModal = ({ ref }: Props) => {
+export const InfoModal = ({ ref, onClose }: Props) => {
   return (
     <Modal ref={ref}>
       <div className="max-w-md flex flex-col gap-6">
@@ -40,7 +41,7 @@ export const InfoModal = ({ ref }: Props) => {
           </p>
         </section>
 
-        <ActionButton onClick={() => ref.current?.close()}>Got it</ActionButton>
+        <ActionButton onClick={onClose}>Got it</ActionButton>
       </div>
     </Modal>
   );

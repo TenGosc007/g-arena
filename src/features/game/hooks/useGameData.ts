@@ -5,10 +5,11 @@ import {
   GameStatus,
   PlayerSymbol,
   PlayerMoveStatus,
+  BoardField,
 } from "t3core";
 
 type GameData = {
-  board: (PlayerSymbol | number)[];
+  board: BoardField[];
   currentPlayer: PlayerSymbol;
   gameStatus: GameStatus;
   saveMove: (index: number) => PlayerMoveStatus;

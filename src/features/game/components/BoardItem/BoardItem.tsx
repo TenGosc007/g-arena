@@ -1,11 +1,11 @@
-import { PlayerSymbol as PlayerSymbolType } from "t3core";
+import { BoardField } from "t3core";
 
 import { cn } from "@/lib/utils";
 
 import { PlayerSymbol } from "../PlayerSymbol";
 
 type Props = {
-  item: PlayerSymbolType | number;
+  item: BoardField;
   onClick?: () => void;
 };
 

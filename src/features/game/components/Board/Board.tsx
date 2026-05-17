@@ -1,4 +1,4 @@
-import { PlayerMoveStatus, PlayerSymbol as PlayerSymbolType } from "t3core";
+import { BoardField, PlayerMoveStatus } from "t3core";
 
 import { cn } from "@/lib/utils";
 
@@ -8,7 +8,7 @@ const BOARD_SIZE = "max-h-[610px] max-w-[610px]";
 const COLUMNS = "grid-cols-3";
 
 type Props = {
-  board: (PlayerSymbolType | number)[];
+  board: BoardField[];
   onClick: (index: number) => PlayerMoveStatus;
 };
 

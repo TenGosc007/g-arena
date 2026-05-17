@@ -8,11 +8,13 @@ import { GameTitle } from "@/components/Atoms/GameTItle";
 import { Icon } from "@/components/Atoms/Icon/Icon";
 
 import { InfoModal } from "../InfoModal";
+import { SettingsModal } from "../SettingsModal";
 
 const ICON_SIZE = 24;
 
 export const Header = () => {
   const modalInfoRef = useRef<HTMLDialogElement>(null);
+  const settingsModalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <>
@@ -28,11 +30,17 @@ export const Header = () => {
             height={ICON_SIZE}
             onClick={() => modalInfoRef.current?.showModal()}
           />
-          <Icon icon={GearIcon} width={ICON_SIZE} height={ICON_SIZE} />
+          <Icon
+            icon={GearIcon}
+            width={ICON_SIZE}
+            height={ICON_SIZE}
+            onClick={() => settingsModalRef.current?.showModal()}
+          />
         </div>
       </header>
 
       <InfoModal ref={modalInfoRef} />
+      <SettingsModal ref={settingsModalRef} />
     </>
   );
 };

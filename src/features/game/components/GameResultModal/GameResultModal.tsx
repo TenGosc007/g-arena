@@ -17,8 +17,8 @@ export const GameResultModal = ({ gameStatus, resetGame, ref }: Props) => {
       <div className="flex flex-col gap-8">
         <h2 className="text-2xl lg:text-3xl font-bold text-primary text-center">
           {gameStatus.status === "win"
-            ? `Player ${gameStatus?.winner} wins!`
-            : "Game ended in a draw!"}
+            ? `Player ${gameStatus?.winner} wins! 🎉`
+            : "Game ended in a draw! 🤝"}
         </h2>
 
         <div className="flex flex-col gap-4">

@@ -2,6 +2,7 @@ import { GearIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 import { GameTitle } from "@/components/Atoms/GameTItle";
+import { Icon } from "@/components/Atoms/Icon/Icon";
 
 const ICON_SIZE = 24;
 
@@ -13,8 +14,8 @@ export const Header = () => {
       </Link>
 
       <div className="flex items-center gap-4">
-        <InfoCircledIcon width={ICON_SIZE} height={ICON_SIZE} />
-        <GearIcon width={ICON_SIZE} height={ICON_SIZE} />
+        <Icon icon={InfoCircledIcon} width={ICON_SIZE} height={ICON_SIZE} />
+        <Icon icon={GearIcon} width={ICON_SIZE} height={ICON_SIZE} />
       </div>
     </header>
   );

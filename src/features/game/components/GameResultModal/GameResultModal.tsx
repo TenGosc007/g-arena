@@ -13,7 +13,7 @@ type Props = {
 
 export const GameResultModal = ({ gameStatus, resetGame, ref }: Props) => {
   return (
-    <Modal>
+    <Modal ref={ref}>
       <div className="flex flex-col gap-8">
         <h2 className="text-2xl lg:text-3xl font-bold text-primary text-center">
           {gameStatus.status === "win"

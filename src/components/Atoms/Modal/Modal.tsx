@@ -8,7 +8,7 @@ type Props = DialogHTMLAttributes<HTMLDialogElement> & {
 export const Modal = ({ children, ref, ...props }: Props) => {
   return (
     <dialog
-      className="border border-primary rounded-md bg-dark text-white p-6 lg:p-12 w-full lg:max-w-md"
+      className="border border-primary rounded-md bg-dark text-white p-6 lg:p-12 w-full md:max-w-md"
       {...props}
       ref={ref}
     >

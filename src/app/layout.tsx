@@ -1,12 +1,15 @@
 import type { Metadata, Viewport } from "next";
 
-import { Montserrat, Handlee } from "next/font/google";
+import { Montserrat, Handlee, Geist } from "next/font/google";
 
 import { Background } from "@/components/Organisms/Background";
 import { Footer } from "@/components/Organisms/Footer";
 import { ModalProvider } from "@/components/Organisms/ModalProvider";
+import { cn } from "@/lib/utils";
 
 import "./globals.css";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -37,7 +40,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${handlee.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        montserrat.variable,
+        handlee.variable,
+        "font-sans",
+        geist.variable,
+      )}
     >
       <body className="min-h-full flex flex-col">
         <Background />

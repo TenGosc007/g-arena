@@ -10,7 +10,7 @@ type Props = {
 };
 
 const sharedStyle =
-  "w-full h-full aspect-square bg-dark flex items-center justify-center text-6xl lg:text-8xl select-none";
+  "w-full h-full aspect-square bg-dark flex items-center justify-center text-7xl sm:text-8xl select-none";
 
 export const BoardItem = ({ item, onClick }: Props) => {
   if (!item || typeof item !== "string") {

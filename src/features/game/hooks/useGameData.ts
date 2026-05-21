@@ -1,12 +1,13 @@
 import { useSyncExternalStore } from "react";
 import {
-  Game,
   GameEvent,
   GameStatus,
   PlayerSymbol,
   PlayerMoveStatus,
   BoardField,
 } from "t3core";
+
+import { getGame } from "../services/gameSession";
 
 type GameData = {
   board: BoardField[];
@@ -16,15 +17,15 @@ type GameData = {
   resetGame: () => void;
 };
 
-export const useGameData = (game: Game): GameData => {
+const game = getGame();
+
+export const useGameData = (): GameData => {
   const { board, currentPlayer, gameStatus } = useSyncExternalStore(
     (onStoreChange) => {
-      game.on(GameEvent.PLAYER_MOVE, onStoreChange);
-      game.on(GameEvent.RESET, onStoreChange);
+      game.on(GameEvent.STATE_CHANGE, onStoreChange);
 
       return () => {
-        game.off(GameEvent.PLAYER_MOVE, onStoreChange);
-        game.off(GameEvent.RESET, onStoreChange);
+        game.off(GameEvent.STATE_CHANGE, onStoreChange);
       };
     },
     () => game.snapshot,

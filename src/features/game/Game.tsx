@@ -6,13 +6,10 @@ import { Board } from "./components/Board";
 import { CurrentPlayer } from "./components/CurrentPlayer";
 import { GameResultModal } from "./components/GameResultModal";
 import { useGameData } from "./hooks";
-import { getGame } from "./services/gameSession";
-
-const game = getGame();
 
 export const Game = () => {
   const { currentPlayer, board, gameStatus, saveMove, resetGame } =
-    useGameData(game);
+    useGameData();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {

@@ -1,22 +1,23 @@
 import { ActionButton } from "@/components/Atoms/ActionButton";
 import { Modal } from "@/components/Atoms/Modal";
 import { Switch } from "@/components/ui/switch";
+import { useSettingsStore } from "@/store/settingsStore";
 
 type Props = {
   ref: React.RefObject<HTMLDialogElement | null>;
   onClose: () => void;
-  soundEnabled?: boolean;
-  onSoundToggle?: () => void;
   isDarkMode?: boolean;
-  onThemeToggle?: () => void;
+  soundEnabled?: boolean;
+  onSoundToggle: () => void;
+  onThemeToggle: () => void;
 };
 
-export const SettingsModal = ({
+export const SettingsModalView = ({
   ref,
   onClose,
+  isDarkMode,
   soundEnabled,
   onSoundToggle,
-  isDarkMode,
   onThemeToggle,
 }: Props) => {
   return (
@@ -61,5 +62,28 @@ export const SettingsModal = ({
         <ActionButton onClick={onClose}>Close</ActionButton>
       </div>
     </Modal>
+  );
+};
+
+export const SettingsModal = ({
+  ref,
+  onClose,
+}: Pick<Props, "ref" | "onClose">) => {
+  const soundEnabled = useSettingsStore((s) => s.soundEnabled);
+  const themeMode = useSettingsStore((s) => s.themeMode);
+  const toggleSound = useSettingsStore((s) => s.toggleSound);
+  const toggleTheme = useSettingsStore((s) => s.toggleTheme);
+
+  const isDarkMode = themeMode === "dark";
+
+  return (
+    <SettingsModalView
+      ref={ref}
+      onClose={onClose}
+      isDarkMode={isDarkMode}
+      soundEnabled={soundEnabled}
+      onSoundToggle={toggleSound}
+      onThemeToggle={toggleTheme}
+    />
   );
 };

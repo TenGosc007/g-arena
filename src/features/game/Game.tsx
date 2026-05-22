@@ -1,32 +1,36 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { PlayerMoveStatus } from "t3core";
+
+import { useSound } from "@/hooks/useSound";
 
 import { Board } from "./components/Board";
 import { CurrentPlayer } from "./components/CurrentPlayer";
 import { GameResultModal } from "./components/GameResultModal";
-import { useGameData } from "./hooks";
+import { useGameData, useGameResultModal } from "./hooks";
 
 export const Game = () => {
   const { currentPlayer, board, gameStatus, saveMove, resetGame } =
     useGameData();
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogRef = useGameResultModal();
+  const { playSound } = useSound();
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (dialog && gameStatus.status !== "running") {
-      dialog.showModal();
+  const handleSaveMove = (index: number) => {
+    const status = saveMove(index);
+
+    if (status === PlayerMoveStatus.SUCCESS) {
+      playSound("place");
+    } else {
+      playSound("occupied");
     }
 
-    return () => {
-      dialog?.close();
-    };
-  }, [gameStatus.status]);
+    return status;
+  };
 
   return (
     <div className="flex flex-1 w-full flex-col items-center justify-center gap-4 p-6">
       <CurrentPlayer currentPlayer={currentPlayer} />
-      <Board board={board} onClick={saveMove} />
+      <Board board={board} onClick={handleSaveMove} />
 
       <GameResultModal
         gameStatus={gameStatus}

@@ -26,7 +26,7 @@ export const BoardItem = ({ item, onClick }: Props) => {
   }
 
   return (
-    <div className={sharedStyle}>
+    <div className={sharedStyle} onClick={onClick}>
       {item && typeof item === "string" ? <PlayerSymbol symbol={item} /> : null}
     </div>
   );

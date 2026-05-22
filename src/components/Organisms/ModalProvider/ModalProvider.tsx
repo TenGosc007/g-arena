@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import { useModalStore } from "@/store/modalStore";
+import { useSettingsStore } from "@/store/settingsStore";
 
 import { InfoModal } from "../InfoModal";
 import { SettingsModal } from "../SettingsModal";
@@ -15,6 +16,10 @@ const syncDialog = (element: HTMLDialogElement | null, open: boolean) => {
 export const ModalProvider = () => {
   const activeModal = useModalStore((s) => s.activeModal);
   const closeModal = useModalStore((s) => s.closeModal);
+  const soundEnabled = useSettingsStore((s) => s.soundEnabled);
+  const themeMode = useSettingsStore((s) => s.themeMode);
+  const toggleSound = useSettingsStore((s) => s.toggleSound);
+  const toggleTheme = useSettingsStore((s) => s.toggleTheme);
 
   const infoRef = useRef<HTMLDialogElement>(null);
   const settingsRef = useRef<HTMLDialogElement>(null);
@@ -38,8 +43,10 @@ export const ModalProvider = () => {
       <SettingsModal
         ref={settingsRef}
         onClose={closeModal}
-        soundEnabled={true}
-        isDarkMode={true}
+        soundEnabled={soundEnabled}
+        isDarkMode={themeMode === "dark"}
+        onSoundToggle={toggleSound}
+        onThemeToggle={toggleTheme}
       />
     </>
   );
